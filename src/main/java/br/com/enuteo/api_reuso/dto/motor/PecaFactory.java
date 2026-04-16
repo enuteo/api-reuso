@@ -5,7 +5,7 @@ import br.com.enuteo.api_reuso.exception.PecaInvalida;
 public interface PecaFactory {
 
     // factory method
-    public static AbstractMotor criaPeca(String nome){
+    public static AbstractMotor criaMotor(String nome){
 
         return switch (nome.toLowerCase()) {
             case "motoreletrico" -> new MotorEletrico();
