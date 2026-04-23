@@ -2,7 +2,7 @@ package br.com.enuteo.api_reuso.dto.motor;
 
 import br.com.enuteo.api_reuso.exception.PecaInvalida;
 
-public interface PecaFactory {
+public interface MotorFactory {
 
     // factory method
     public static AbstractMotor criaMotor(String nome){
