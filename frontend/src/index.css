@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Forge — Workshop Management Design System
+   Palette: Navy Trust. Typography: Sora + Manrope.
+   All colors HSL. */
+
+@layer base {
+  :root {
+    /* Surfaces */
+    --background: 220 30% 97%;
+    --foreground: 222 60% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 60% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 60% 12%;
+
+    /* Brand: Navy Trust */
+    --primary: 222 62% 15%;        /* deep navy #0f1b3d */
+    --primary-foreground: 220 40% 97%;
+
+    --secondary: 215 51% 25%;      /* navy 2 #1e3a5f */
+    --secondary-foreground: 220 40% 98%;
+
+    --accent: 211 47% 43%;         /* steel blue #3b6fa0 */
+    --accent-foreground: 220 40% 98%;
+
+    --muted: 218 30% 94%;
+    --muted-foreground: 218 18% 42%;
+
+    --surface: 220 35% 99%;
+    --surface-elevated: 0 0% 100%;
+
+    --destructive: 0 72% 48%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 152 56% 38%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 60% 12%;
+
+    --border: 218 22% 88%;
+    --input: 218 22% 88%;
+    --ring: 211 47% 43%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(222 62% 15%) 0%, hsl(215 51% 25%) 55%, hsl(211 47% 43%) 100%);
+    --gradient-panel: linear-gradient(180deg, hsl(220 35% 99%) 0%, hsl(218 30% 94%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(211 47% 43%) 0%, hsl(215 51% 25%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px hsl(222 60% 12% / 0.04);
+    --shadow-md: 0 8px 24px -8px hsl(222 60% 12% / 0.12);
+    --shadow-lg: 0 24px 48px -16px hsl(222 60% 12% / 0.25);
+    --shadow-glow: 0 0 0 1px hsl(211 47% 43% / 0.25), 0 12px 32px -8px hsl(211 47% 43% / 0.35);
+
+    /* Motion */
+    --transition-base: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Sidebar */
+    --sidebar-background: 222 62% 13%;
+    --sidebar-foreground: 220 40% 90%;
+    --sidebar-primary: 211 70% 60%;
+    --sidebar-primary-foreground: 222 62% 12%;
+    --sidebar-accent: 222 50% 20%;
+    --sidebar-accent-foreground: 220 40% 98%;
+    --sidebar-border: 222 40% 22%;
+    --sidebar-ring: 211 70% 60%;
+  }
+
+  .dark {
+    --background: 222 50% 8%;
+    --foreground: 220 40% 96%;
+    --card: 222 45% 11%;
+    --card-foreground: 220 40% 96%;
+    --popover: 222 45% 11%;
+    --popover-foreground: 220 40% 96%;
+    --primary: 211 70% 60%;
+    --primary-foreground: 222 62% 12%;
+    --secondary: 215 40% 22%;
+    --secondary-foreground: 220 40% 96%;
+    --accent: 211 60% 50%;
+    --accent-foreground: 220 40% 98%;
+    --muted: 222 35% 16%;
+    --muted-foreground: 218 18% 65%;
+    --surface: 222 45% 11%;
+    --surface-elevated: 222 45% 14%;
+    --border: 222 35% 20%;
+    --input: 222 35% 20%;
+    --ring: 211 60% 55%;
+    --sidebar-background: 222 60% 7%;
+    --sidebar-foreground: 220 30% 88%;
+    --sidebar-accent: 222 45% 14%;
+    --sidebar-border: 222 40% 16%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: 'Manrope', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: 'Sora', system-ui, sans-serif; }
+  .bg-gradient-hero { background: var(--gradient-hero); }
+  .bg-gradient-panel { background: var(--gradient-panel); }
+  .bg-gradient-accent { background: var(--gradient-accent); }
+  .shadow-elev { box-shadow: var(--shadow-md); }
+  .shadow-elev-lg { box-shadow: var(--shadow-lg); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .grid-bg {
+    background-image:
+      linear-gradient(hsl(220 40% 100% / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(220 40% 100% / 0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+}
