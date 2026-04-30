@@ -19,11 +19,14 @@ import br.com.enuteo.api_reuso.service.EstoqueService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api-reuso/pecas")
 public class EstoqueController {
 
     private final EstoqueService estoqueService;
+    public EstoqueController(EstoqueService estoqueService){
+        this.estoqueService = estoqueService;
+    }
+    
     @GetMapping
     public List<AbstractPeca> listar() {
         return new ArrayList<>();

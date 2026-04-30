@@ -8,11 +8,13 @@ import lombok.RequiredArgsConstructor;
 
 // anotaçao service ja faz o singleton
 @Service
-@RequiredArgsConstructor
 public class EstoqueService {
     
     private final EstoqueRepository estoqueRepository;
     
+    public EstoqueService(EstoqueRepository estoqueRepository){
+        this.estoqueRepository = estoqueRepository;
+    }
     public AbstractPeca buscarPeca(Long id, String nome){
         return estoqueRepository.buscarPeca(id, nome);
     }
