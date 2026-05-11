@@ -14,4 +14,12 @@ public class GlobalExceptionHandler {
         String message = ex.getMessage();
         return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @ExceptionHandler(InvalidUser.class)
+    public ResponseEntity<Object> handleInvalidUserException(InvalidUser ex, WebRequest request){
+        
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+
+    }
+    
 }

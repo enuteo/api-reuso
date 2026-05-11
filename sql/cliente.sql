@@ -1,8 +1,0 @@
-CREATE TABLE cliente (
-    
-    id int UNSIGNED NOT NULL AUTOINCREMENT,
-    nome VARCHAR (255) NOT NULL,
-    email VARCHAR (255) NOT NULL,
-
-    PRIMARY KEY (id)
-);

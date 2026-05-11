@@ -10,7 +10,6 @@ import br.com.enuteo.api_reuso.service.LoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @RequestMapping("/auth/login/")
 public class LoginController {
 
@@ -22,7 +21,7 @@ public class LoginController {
 
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request){
 
-        log.info("login do usuario: {}", request.getEmail());
+        System.out.println("");
         return ResponseEntity.ok(loginService.login(request));
         
     }
