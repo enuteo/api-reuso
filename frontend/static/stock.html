@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Stock · Forge Workshop OS</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">F</div>
+      <div><div class="brand-name">Forge</div><div class="brand-sub">Workshop OS</div></div>
+    </div>
+    <div class="nav-group-label">Workspace</div>
+    <nav class="nav">
+      <a href="overview.html"><span class="dot"></span> Overview</a>
+      <a href="stock.html" class="active"><span class="dot"></span> Stock</a>
+      <a href="users.html"><span class="dot"></span> Users</a>
+    </nav>
+    <div class="nav-group-label">Enterprise</div>
+    <nav class="nav">
+      <a href="#"><span class="dot"></span> Enterprise</a>
+      <a href="#"><span class="dot"></span> Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="org">Acme Workshop</div>
+      <div>Pro Plan · 12 seats</div>
+      <div style="margin-top:10px"><a href="index.html" style="color:var(--sidebar-muted)">↩ Sign out</a></div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <input class="search" placeholder="Search parts, employees, work orders…" />
+      <div class="right"><button class="btn btn-sm">🔔</button><div class="avatar">JM</div></div>
+    </header>
+
+    <div class="content">
+      <div class="page-head">
+        <div>
+          <h1>Stock Management</h1>
+          <p>Monitor inventory levels, track movement and replenish parts before they run out.</p>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn">⬇ Export</button>
+          <button class="btn btn-primary">＋ Add part</button>
+        </div>
+      </div>
+
+      <div class="grid cols-4" style="margin-bottom:20px">
+        <div class="card stat"><div class="icon-box">📦</div><div class="label" style="margin-top:14px">Total SKUs</div><div class="value">1,284</div><div class="delta">+24 this week</div></div>
+        <div class="card stat"><div class="icon-box">✅</div><div class="label" style="margin-top:14px">Stock value</div><div class="value">$184,920</div><div class="delta">+3.2%</div></div>
+        <div class="card stat"><div class="icon-box">📉</div><div class="label" style="margin-top:14px">Low stock</div><div class="value">12</div><div class="delta">+4 vs last week</div></div>
+        <div class="card stat"><div class="icon-box">⚠️</div><div class="label" style="margin-top:14px">Out of stock</div><div class="value">3</div><div class="delta">Action required</div></div>
+      </div>
+
+      <div class="card no-pad">
+        <div class="toolbar">
+          <input class="search-input" type="text" placeholder="Search by SKU, name or category…" />
+          <button class="btn btn-sm">⏷ Category</button>
+          <button class="btn btn-sm">⏷ Location</button>
+          <button class="btn btn-sm">Status: All</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>SKU</th><th>Item</th><th>Category</th><th>Location</th>
+                <th class="right">Qty</th><th class="right">Min</th><th class="right">Price</th>
+                <th>Status</th><th class="right">7d</th>
+              </tr>
+            </thead>
+            <tbody id="stock-tbody">
+              <tr><td class="mono">BRK-204</td><td><b>Brake Pad Set — Ceramic</b></td><td>Brakes</td><td><span class="mono">A-12</span></td><td class="right">84</td><td class="right">20</td><td class="right">$42.50</td><td><span class="badge ok">In stock</span></td><td class="right" style="color:var(--success)">+12%</td></tr>
+              <tr><td class="mono">OIL-5W30</td><td><b>Engine Oil 5W-30 (5L)</b></td><td>Lubricants</td><td><span class="mono">B-03</span></td><td class="right">9</td><td class="right">15</td><td class="right">$36.00</td><td><span class="badge warn">Low</span></td><td class="right" style="color:var(--danger)">-8%</td></tr>
+              <tr><td class="mono">FLT-AIR-22</td><td><b>Air Filter — Universal</b></td><td>Filters</td><td><span class="mono">C-08</span></td><td class="right">47</td><td class="right">25</td><td class="right">$14.90</td><td><span class="badge ok">In stock</span></td><td class="right" style="color:var(--success)">+4%</td></tr>
+              <tr><td class="mono">BAT-12V70</td><td><b>Car Battery 12V 70Ah</b></td><td>Electrical</td><td><span class="mono">D-01</span></td><td class="right">0</td><td class="right">5</td><td class="right">$129.00</td><td><span class="badge bad">Out</span></td><td class="right" style="color:var(--danger)">-100%</td></tr>
+              <tr><td class="mono">TYR-205-55</td><td><b>Tire 205/55 R16</b></td><td>Tires</td><td><span class="mono">E-Bay</span></td><td class="right">32</td><td class="right">12</td><td class="right">$88.00</td><td><span class="badge ok">In stock</span></td><td class="right" style="color:var(--success)">+22%</td></tr>
+              <tr><td class="mono">SPK-IRD-4</td><td><b>Iridium Spark Plug ×4</b></td><td>Ignition</td><td><span class="mono">A-05</span></td><td class="right">6</td><td class="right">10</td><td class="right">$24.00</td><td><span class="badge warn">Low</span></td><td class="right" style="color:var(--danger)">-3%</td></tr>
+              <tr><td class="mono">WPR-22B</td><td><b>Wiper Blade 22"</b></td><td>Exterior</td><td><span class="mono">C-14</span></td><td class="right">58</td><td class="right">20</td><td class="right">$12.50</td><td><span class="badge ok">In stock</span></td><td class="right" style="color:var(--success)">+9%</td></tr>
+              <tr><td class="mono">COOL-G12</td><td><b>Coolant G12+ (1L)</b></td><td>Lubricants</td><td><span class="mono">B-07</span></td><td class="right">23</td><td class="right">10</td><td class="right">$9.90</td><td><span class="badge ok">In stock</span></td><td class="right" style="color:var(--success)">+1%</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pager">
+          <span>Showing 8 of 1,284 items</span>
+          <div style="display:flex;gap:8px"><button class="btn btn-sm" disabled>Previous</button><button class="btn btn-sm">Next</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="api.js"></script>
+<script>
+  function renderStock(items) {
+    const tbody = document.getElementById("stock-tbody");
+    tbody.innerHTML = items.map(it => `
+      <tr>
+        <td class="mono">${it.sku}</td>
+        <td><b>${it.name}</b></td>
+        <td>${it.category || "—"}</td>
+        <td><span class="mono">${it.location || "—"}</span></td>
+        <td class="right">${it.qty}</td>
+        <td class="right">${it.min ?? "—"}</td>
+        <td class="right">$${Number(it.price ?? 0).toFixed(2)}</td>
+        <td>${statusBadge(it.status || (it.qty === 0 ? "Out" : it.qty < (it.min ?? 0) ? "Low" : "In stock"))}</td>
+        <td class="right">—</td>
+      </tr>`).join("");
+  }
+  api.listStock()
+    .then(renderStock)
+    .catch(err => {
+      console.warn("Stock API failed, keeping demo rows:", err);
+      const banner = document.createElement("div");
+      banner.style.cssText = "margin:0 0 14px;padding:10px 12px;border-radius:8px;background:rgba(220,53,69,.08);color:var(--danger);font-size:13px";
+      banner.textContent = `API at ${API_BASE} unreachable — showing demo data.`;
+      document.querySelector(".content").prepend(banner);
+    });
+</script>
+</body>
+</html>

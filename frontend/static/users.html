@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Users · Forge Workshop OS</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">F</div>
+      <div><div class="brand-name">Forge</div><div class="brand-sub">Workshop OS</div></div>
+    </div>
+    <div class="nav-group-label">Workspace</div>
+    <nav class="nav">
+      <a href="overview.html"><span class="dot"></span> Overview</a>
+      <a href="stock.html"><span class="dot"></span> Stock</a>
+      <a href="users.html" class="active"><span class="dot"></span> Users</a>
+    </nav>
+    <div class="nav-group-label">Enterprise</div>
+    <nav class="nav">
+      <a href="#"><span class="dot"></span> Enterprise</a>
+      <a href="#"><span class="dot"></span> Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="org">Acme Workshop</div>
+      <div>Pro Plan · 12 seats</div>
+      <div style="margin-top:10px"><a href="index.html" style="color:var(--sidebar-muted)">↩ Sign out</a></div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <input class="search" placeholder="Search parts, employees, work orders…" />
+      <div class="right"><button class="btn btn-sm">🔔</button><div class="avatar">JM</div></div>
+    </header>
+
+    <div class="content">
+      <div class="page-head">
+        <div>
+          <h1>User Management</h1>
+          <p>Provision employee accounts, assign workshop roles and audit access — managed by the Enterprise system.</p>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn">🏢 Enterprise sync</button>
+          <button class="btn btn-primary">＋ Invite employee</button>
+        </div>
+      </div>
+
+      <div class="banner">
+        <div class="icon">🏢</div>
+        <div class="grow">
+          <div class="title">Synced with Enterprise · Acme Workshop Group</div>
+          <div class="sub">User identities and permissions are governed by the Enterprise directory. Last sync: 2 minutes ago.</div>
+        </div>
+        <button class="btn btn-sm">Open Enterprise console</button>
+      </div>
+
+      <div class="grid cols-4" style="margin-bottom:20px">
+        <div class="card stat"><div class="icon-box">👥</div><div class="label" style="margin-top:14px">Employees</div><div class="value">47</div></div>
+        <div class="card stat"><div class="icon-box">✅</div><div class="label" style="margin-top:14px">Active today</div><div class="value">39</div></div>
+        <div class="card stat"><div class="icon-box">🛡️</div><div class="label" style="margin-top:14px">Roles</div><div class="value">4</div></div>
+        <div class="card stat"><div class="icon-box">📍</div><div class="label" style="margin-top:14px">Locations</div><div class="value">2</div></div>
+      </div>
+
+      <div class="card no-pad">
+        <div class="toolbar">
+          <input class="search-input" type="text" placeholder="Search employees…" />
+          <button class="btn btn-sm">⏷ Role</button>
+          <button class="btn btn-sm">⏷ Team</button>
+          <button class="btn btn-sm">Status: All</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Employee</th><th>Contact</th><th>Role</th><th>Team</th><th>Status</th><th>Joined</th></tr>
+            </thead>
+            <tbody id="users-tbody">
+              <tr><td><b>Jordan Mills</b><div class="mono">EMP-0421</div></td><td><div>jordan.mills@acme-workshop.com</div><div class="mono">+1 (415) 555-2310</div></td><td><span class="badge role-admin">Admin</span></td><td>HQ</td><td><span class="badge ok">Active</span></td><td>Mar 2021</td></tr>
+              <tr><td><b>Priya Raman</b><div class="mono">EMP-0422</div></td><td><div>priya.raman@acme-workshop.com</div><div class="mono">+1 (415) 555-2188</div></td><td><span class="badge role-manager">Manager</span></td><td>Service Bay</td><td><span class="badge ok">Active</span></td><td>Aug 2021</td></tr>
+              <tr><td><b>Marcus Webb</b><div class="mono">EMP-0423</div></td><td><div>marcus.webb@acme-workshop.com</div><div class="mono">+1 (415) 555-7702</div></td><td><span class="badge role-mech">Mechanic</span></td><td>Engine</td><td><span class="badge ok">Active</span></td><td>Jan 2022</td></tr>
+              <tr><td><b>Sara Okafor</b><div class="mono">EMP-0424</div></td><td><div>sara.okafor@acme-workshop.com</div><div class="mono">+1 (415) 555-1129</div></td><td><span class="badge role-mech">Mechanic</span></td><td>Bodywork</td><td><span class="badge warn">On leave</span></td><td>Jun 2022</td></tr>
+              <tr><td><b>Diego Hernández</b><div class="mono">EMP-0425</div></td><td><div>diego.h@acme-workshop.com</div><div class="mono">+1 (415) 555-8843</div></td><td><span class="badge role-mech">Mechanic</span></td><td>Tires</td><td><span class="badge ok">Active</span></td><td>Sep 2022</td></tr>
+              <tr><td><b>Lina Park</b><div class="mono">EMP-0426</div></td><td><div>lina.park@acme-workshop.com</div><div class="mono">+1 (415) 555-3360</div></td><td><span class="badge role-rec">Receptionist</span></td><td>Front Desk</td><td><span class="badge ok">Active</span></td><td>Feb 2023</td></tr>
+              <tr><td><b>Tom Becker</b><div class="mono">EMP-0427</div></td><td><div>tom.becker@acme-workshop.com</div><div class="mono">+1 (415) 555-9921</div></td><td><span class="badge role-mech">Mechanic</span></td><td>Electrical</td><td><span class="badge bad">Inactive</span></td><td>Apr 2023</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pager">
+          <span>Showing 7 of 47 employees</span>
+          <div style="display:flex;gap:8px"><button class="btn btn-sm" disabled>Previous</button><button class="btn btn-sm">Next</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="api.js"></script>
+<script>
+  function renderUsers(users) {
+    const tbody = document.getElementById("users-tbody");
+    tbody.innerHTML = users.map(u => `
+      <tr>
+        <td><b>${u.name}</b><div class="mono">${u.id || ""}</div></td>
+        <td><div>${u.email || ""}</div><div class="mono">${u.phone || ""}</div></td>
+        <td>${roleBadge(u.role)}</td>
+        <td>${u.team || "—"}</td>
+        <td>${statusBadge(u.status)}</td>
+        <td>${u.joined || "—"}</td>
+      </tr>`).join("");
+  }
+  api.listUsers()
+    .then(renderUsers)
+    .catch(err => {
+      console.warn("Users API failed, keeping demo rows:", err);
+      const banner = document.createElement("div");
+      banner.style.cssText = "margin:0 0 14px;padding:10px 12px;border-radius:8px;background:rgba(220,53,69,.08);color:var(--danger);font-size:13px";
+      banner.textContent = `API at ${API_BASE} unreachable — showing demo data.`;
+      document.querySelector(".content").prepend(banner);
+    });
+</script>
+</body>
+</html>

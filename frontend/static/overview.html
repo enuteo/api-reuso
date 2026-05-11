@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Overview · Forge Workshop OS</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">F</div>
+      <div>
+        <div class="brand-name">Forge</div>
+        <div class="brand-sub">Workshop OS</div>
+      </div>
+    </div>
+    <div class="nav-group-label">Workspace</div>
+    <nav class="nav">
+      <a href="overview.html" class="active"><span class="dot"></span> Overview</a>
+      <a href="stock.html"><span class="dot"></span> Stock</a>
+      <a href="users.html"><span class="dot"></span> Users</a>
+    </nav>
+    <div class="nav-group-label">Enterprise</div>
+    <nav class="nav">
+      <a href="#"><span class="dot"></span> Enterprise</a>
+      <a href="#"><span class="dot"></span> Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="org">Acme Workshop</div>
+      <div>Pro Plan · 12 seats</div>
+      <div style="margin-top:10px"><a href="index.html" style="color:var(--sidebar-muted)">↩ Sign out</a></div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <input class="search" placeholder="Search parts, employees, work orders…" />
+      <div class="right">
+        <button class="btn btn-sm">🔔</button>
+        <div class="avatar">JM</div>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="page-head">
+        <div>
+          <h1>Workshop Overview</h1>
+          <p>A quick pulse of operations. Jump into stock or user management to dig deeper.</p>
+        </div>
+      </div>
+
+      <div class="grid cols-3" style="margin-bottom:18px">
+        <div class="card stat">
+          <div class="icon-box">🔧</div>
+          <div class="label" style="margin-top:14px">Open work orders</div>
+          <div class="value">18</div>
+          <div class="delta">5 due today</div>
+        </div>
+        <div class="card stat">
+          <div class="icon-box">📈</div>
+          <div class="label" style="margin-top:14px">Bay utilization</div>
+          <div class="value">82%</div>
+          <div class="delta">+6% vs last week</div>
+        </div>
+        <div class="card stat">
+          <div class="icon-box">⚠️</div>
+          <div class="label" style="margin-top:14px">Critical alerts</div>
+          <div class="value">3</div>
+          <div class="delta">Stock & maintenance</div>
+        </div>
+      </div>
+
+      <div class="grid cols-2">
+        <a href="stock.html" class="card shortcut">
+          <div class="icon">📦</div>
+          <div class="grow">
+            <div class="title">Stock Management</div>
+            <div class="sub">Inventory, alerts and replenishment.</div>
+          </div>
+          <div>→</div>
+        </a>
+        <a href="users.html" class="card shortcut">
+          <div class="icon">👥</div>
+          <div class="grow">
+            <div class="title">User Management</div>
+            <div class="sub">Employees, roles and Enterprise sync.</div>
+          </div>
+          <div>→</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
