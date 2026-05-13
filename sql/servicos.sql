@@ -1,6 +1,6 @@
 CREATE TABLE servicos (
     
-    id int UNSIGNED NOT NULL AUTOINCREMENT,
+    id int UNSIGNED NOT NULL AUTO_INCREMENT,
     nome VARCHAR (255) NOT NULL,
     precos FLOAT NOT NULL,
     descricao TEXT,
