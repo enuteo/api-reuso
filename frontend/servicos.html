@@ -3,31 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestão de Serviços</title>
+    <title>Serviços - Reuso</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="sidebar">
         <div class="sidebar-header">Reuso System</div>
         <ul class="nav-links">
-            <li><a href="dashboard.html" >Dashboard</a></li>
-            <li><a href="estoque.html" >Estoque</a></li>
-            <li><a href="servicos.html" class='active'>Serviços</a></li>
-            <li><a href="cadastro-cliente.html" >Novo Cliente</a></li>
-            <li><a href="cadastro-usuario.html" >Novo Usuário</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="estoque.html">Estoque</a></li>
+            <li><a href="servicos.html" class="active">Serviços</a></li>
+            <li><a href="cadastro-cliente.html">Novo Cliente</a></li>
+            <li><a href="cadastro-usuario.html">Novo Usuário</a></li>
             <li><a href="login.html">Sair</a></li>
         </ul>
     </div>
     
     <div class="main-content">
-        
         <div class="header-row">
             <h1>Histórico de Serviços</h1>
             <button id="btnNovoServico" class="btn btn-primary">Registrar Serviço</button>
         </div>
         
         <div class="table-container">
-            
             <table id="tabelaServicos">
                 <thead>
                     <tr>
@@ -38,12 +36,6 @@
                     </tr>
                 </thead>
                 <tbody id="tbodyServicos">
-                    <tr>
-                        <td>OS-2026-001</td>
-                        <td>Indústrias Acme</td>
-                        <td>10/05/2026</td>
-                        <td><span class="badge badge-warning">Em Andamento</span></td>
-                    </tr>
                 </tbody>
             </table>
         </div>

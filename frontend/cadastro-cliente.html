@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novo Cliente</title>
+    <title>Novo Cliente - Reuso</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="sidebar">
         <div class="sidebar-header">Reuso System</div>
         <ul class="nav-links">
-            <li><a href="dashboard.html" >Dashboard</a></li>
-            <li><a href="estoque.html" >Estoque</a></li>
-            <li><a href="servicos.html" >Serviços</a></li>
-            <li><a href="cadastro-cliente.html" class='active'>Novo Cliente</a></li>
-            <li><a href="cadastro-usuario.html" >Novo Usuário</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="estoque.html">Estoque</a></li>
+            <li><a href="servicos.html">Serviços</a></li>
+            <li><a href="cadastro-cliente.html" class="active">Novo Cliente</a></li>
+            <li><a href="cadastro-usuario.html">Novo Usuário</a></li>
             <li><a href="login.html">Sair</a></li>
         </ul>
     </div>
     
     <div class="main-content">
-        
         <div class="header-row">
             <h1>Cadastrar Novo Cliente</h1>
         </div>
@@ -28,19 +27,16 @@
         <div class="form-card">
             
             <form id="formCliente" onsubmit="event.preventDefault(); criarCliente();">
-                
                 <div class="form-group">
                     <label>Nome / Razão Social</label>
                     <input type="text" id="clienteNome" required>
                 </div>
                 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                    
+                <div class="form-grid">
                     <div class="form-group">
                         <label>CPF / CNPJ</label>
                         <input type="text" id="clienteDocumento" required>
                     </div>
-                    
                     <div class="form-group">
                         <label>Telefone</label>
                         <input type="text" id="clienteTelefone">
@@ -52,8 +48,9 @@
                     <input type="email" id="clienteEmail" required>
                 </div>
                 
-                <button type="submit" id="btnSalvarCliente" class="btn btn-primary" style="margin-top: 1rem;">Salvar Cliente</button>
+                <button type="submit" id="btnSalvarCliente" class="btn btn-primary mt-3">Salvar Cliente</button>
             </form>
+
         </div>
     </div>
 

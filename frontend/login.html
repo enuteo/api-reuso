@@ -3,21 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acesso</title>
+    <title>Acesso - Reuso</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="full-page">
-        
-        <div class="form-card" style="width: 400px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);">
+        <div class="form-card">
             
-            <div style="text-align: center; margin-bottom: 2rem;">
-                <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Bem-vindo</h2>
-                <p style="color: var(--text-muted); font-size: 0.875rem;">Acesse sua conta</p>
+            <div class="text-center">
+                <h2>Bem-vindo</h2>
+                <p class="text-muted">Acesse sua conta</p>
             </div>
             
             <form id="formLogin" onsubmit="event.preventDefault(); fazerLogin();">
-                
                 <div class="form-group">
                     <label>Email</label>
                     <input type="email" id="email" required placeholder="exemplo@email.com">
@@ -28,8 +26,9 @@
                     <input type="password" id="senha" required placeholder="••••••••">
                 </div>
                 
-                <button type="submit" id="btnLogin" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Entrar</button>
+                <button type="submit" id="btnLogin" class="btn btn-primary w-full">Entrar</button>
             </form>
+
         </div>
     </div>
 
