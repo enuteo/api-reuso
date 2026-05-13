@@ -2,10 +2,12 @@ spring:
     application:
         name: api-reuso
     datasource:
-        url: jdbc:mysql://localhost:3306
+        url: jdbc:mysql://localhost:3306/db_reuso
         username: root
-        password: root1234
-        driver-class-name: com.mysql.cj.jdbc.Driver
+        password: 
+    jpa:
+        hibernate:
+            ddl-auto: update
     
 app:
     url:

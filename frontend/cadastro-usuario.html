@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Usuário</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">Reuso System</div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html" >Dashboard</a></li>
+            <li><a href="estoque.html" >Estoque</a></li>
+            <li><a href="servicos.html" >Serviços</a></li>
+            <li><a href="cadastro-cliente.html" >Novo Cliente</a></li>
+            <li><a href="cadastro-usuario.html" class='active'>Novo Usuário</a></li>
+            <li><a href="login.html">Sair</a></li>
+        </ul>
+    </div>
+    
+    <div class="main-content">
+        
+        <div class="header-row">
+            <h1>Adicionar Operador</h1>
+        </div>
+        
+        <div class="form-card">
+            
+            <form id="formUsuario" onsubmit="event.preventDefault(); criarUsuario();">
+                
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" id="usuarioNome" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Email de Acesso</label>
+                    <input type="email" id="usuarioEmail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Nível de Acesso</label>
+                    <select id="usuarioNivel" required>
+                        <option value="1">Administrador (Master)</option>
+                        <option value="0">Técnico (Padrão)</option>
+                    </select>
+                </div>
+                
+                <button type="submit" id="btnSalvarUsuario" class="btn btn-primary" style="margin-top: 1rem;">Criar Acesso</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+</body>
+</html>

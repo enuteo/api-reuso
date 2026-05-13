@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">Reuso System</div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html" class='active'>Dashboard</a></li>
+            <li><a href="estoque.html" >Estoque</a></li>
+            <li><a href="servicos.html" >Serviços</a></li>
+            <li><a href="cadastro-cliente.html" >Novo Cliente</a></li>
+            <li><a href="cadastro-usuario.html" >Novo Usuário</a></li>
+            <li><a href="login.html">Sair</a></li>
+        </ul>
+    </div>
+    
+    <div class="main-content">
+        
+        <div class="header-row">
+            <h1>Dashboard</h1>
+        </div>
+        
+        <div class="card-grid">
+            
+            <div class="card">
+                <h3>Peças em Estoque</h3>
+                <p class="value" id="kpiEstoque">1.245</p>
+            </div>
+            
+            <div class="card">
+                <h3>Serviços Ativos</h3>
+                <p class="value" id="kpiServicos" style="color: var(--primary);">34</p>
+            </div>
+            
+            <div class="card">
+                <h3>Clientes Registrados</h3>
+                <p class="value" id="kpiClientes" style="color: #166534;">89</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+</body>
+</html>
