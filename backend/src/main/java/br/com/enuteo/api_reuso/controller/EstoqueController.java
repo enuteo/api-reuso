@@ -1,10 +1,8 @@
 package br.com.enuteo.api_reuso.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,20 +14,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.enuteo.api_reuso.dto.pecas.AbstractPeca;
 import br.com.enuteo.api_reuso.service.EstoqueService;
-import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api-reuso/pecas")
+@RequestMapping("/api/pecas") 
+@CrossOrigin(origins = "*")   
 public class EstoqueController {
 
     private final EstoqueService estoqueService;
+    
     public EstoqueController(EstoqueService estoqueService){
         this.estoqueService = estoqueService;
     }
     
     @GetMapping
     public List<AbstractPeca> listar() {
-        return new ArrayList<>();
+        return estoqueService.listarTodas();
     }
 
     @GetMapping("/{nome}/{id}")
@@ -49,7 +48,6 @@ public class EstoqueController {
 
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id) {
-        // no need
+        // No operation required for current MVP scope
     }
-    
 }
