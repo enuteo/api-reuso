@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Histórico de Serviços - Oficina</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">Oficina System</div>
+            <nav class="sidebar-nav">
+                <a href="dashboard-cliente.html">Meu Painel</a>
+                <a href="cliente-andamento.html">Serviços em Andamento</a>
+                <a href="cliente-historico.html" class="active">Meu Histórico</a>
+                <a href="cliente-perfil.html">Editar Cadastro</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="btn" style="background: var(--danger); text-align: center;">Sair</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="page-header">
+                <h1>Histórico de Serviços</h1>
+                <p>Consulte todas as manutenções já executadas em seus veículos.</p>
+            </header>
+
+            <div class="content-section">
+                <h2>Registros de Ordens de Serviço Encerradas</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>OS</th>
+                            <th>Data Conclusão</th>
+                            <th>Veículo</th>
+                            <th>Serviço Executado</th>
+                            <th>Valor Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#0912</td>
+                            <td>14/02/2026</td>
+                            <td>VW Polo 2020</td>
+                            <td>Troca de Óleo e Filtros</td>
+                            <td>R$ 350,00</td>
+                            <td><span class="badge success">Concluído</span></td>
+                        </tr>
+                        <tr>
+                            <td>#0845</td>
+                            <td>10/11/2025</td>
+                            <td>VW Polo 2020</td>
+                            <td>Alinhamento e Balanceamento</td>
+                            <td>R$ 180,00</td>
+                            <td><span class="badge success">Concluído</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

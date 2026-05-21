@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área do Cliente - Oficina</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">Oficina System</div>
+            <nav class="sidebar-nav">
+                <a href="dashboard-cliente.html" class="active">Meu Painel</a>
+                <a href="cliente-andamento.html">Serviços em Andamento</a>
+                <a href="cliente-historico.html">Meu Histórico</a>
+                <a href="cliente-perfil.html">Editar Cadastro</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="btn" style="background: var(--danger); text-align: center;">Sair</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="page-header">
+                <h1>Bem-vindo, Cliente</h1>
+                <p>Acompanhe os serviços do seu veículo.</p>
+            </header>
+
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <h3>Veículos em Manutenção</h3>
+                    <div class="value">1</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Serviços Realizados</h3>
+                    <div class="value">3</div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Status do Veículo Atual</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ordem</th>
+                            <th>Veículo</th>
+                            <th>Status</th>
+                            <th>Previsão de Entrega</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#1043</td>
+                            <td>VW Polo 2020</td>
+                            <td><span class="badge primary">Aguardando Peça</span></td>
+                            <td>25/05/2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -25,7 +25,6 @@ public class LoginService {
         
         if(loginRepository.userExists(request.getEmail(), request.getPassword())){
             LoginResponse response = new LoginResponse();
-            response.setUrl(url);
             return response;
         }else{
             throw new InvalidUser("Usuário ou senha inválidos");

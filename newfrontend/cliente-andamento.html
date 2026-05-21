@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços em Andamento - Oficina</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">Oficina System</div>
+            <nav class="sidebar-nav">
+                <a href="dashboard-cliente.html">Meu Painel</a>
+                <a href="cliente-andamento.html" class="active">Serviços em Andamento</a>
+                <a href="cliente-historico.html">Meu Histórico</a>
+                <a href="cliente-perfil.html">Editar Cadastro</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="btn" style="background: var(--danger); text-align: center;">Sair</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="page-header">
+                <h1>Serviços em Andamento</h1>
+                <p>Monitore o status atual e o diagnóstico dos seus veículos na oficina.</p>
+            </header>
+
+            <div class="content-section">
+                <h2>Manutenções Ativas</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>OS</th>
+                            <th>Veículo</th>
+                            <th>Placa</th>
+                            <th>Serviço Solicitado</th>
+                            <th>Previsão</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#1043</td>
+                            <td>VW Polo 2020</td>
+                            <td>ABC-1234</td>
+                            <td>Troca de Pastilhas e Correia Dentada</td>
+                            <td>25/05/2026</td>
+                            <td><span class="badge primary">Aguardando Peça</span></td>
+                        </tr>
+                        <tr>
+                            <td>#1050</td>
+                            <td>Chevrolet Onix 2022</td>
+                            <td>XYZ-9876</td>
+                            <td>Revisão Periódica de 40.000km</td>
+                            <td>22/05/2026</td>
+                            <td><span class="badge warning">No Elevador</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

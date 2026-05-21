@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Cadastro - Oficina</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">Oficina System</div>
+            <nav class="sidebar-nav">
+                <a href="dashboard-cliente.html">Meu Painel</a>
+                <a href="cliente-andamento.html">Serviços em Andamento</a>
+                <a href="cliente-historico.html">Meu Histórico</a>
+                <a href="cliente-perfil.html" class="active">Editar Cadastro</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="btn" style="background: var(--danger); text-align: center;">Sair</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="page-header">
+                <h1>Editar Informações Cadastrais</h1>
+                <p>Mantenha seus dados de contato e segurança sempre atualizados.</p>
+            </header>
+
+            <div class="content-section" style="max-width: 600px;">
+                <h2>Meus Dados</h2>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" name="nome" value="Lucas Cunha da Silva" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone / WhatsApp</label>
+                        <input type="text" id="telefone" name="telefone" value="(41) 99999-9999" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail Corporativo / Pessoal</label>
+                        <input type="email" id="email" name="email" value="lucas@exemplo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password_atual">Senha Atual (Para confirmar alterações)</label>
+                        <input type="password" id="password_atual" name="password_atual">
+                    </div>
+                    <div class="form-group">
+                        <label for="new_password">Nova Senha (Deixe em branco para manter a atual)</label>
+                        <input type="password" id="new_password" name="new_password">
+                    </div>
+                    
+                    <button type="submit" class="btn" style="margin-top: 1.5rem;">Salvar Alterações</button>
+                </form>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

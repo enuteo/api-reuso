@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Peças - Oficina</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">Oficina System</div>
+            <nav class="sidebar-nav">
+                <a href="dashboard-usuario.html">Dashboard</a>
+                <a href="servicos-andamento.html">Serviços em Andamento</a>
+                <a href="servicos-lista.html">Lista de Todos os Serviços</a>
+                <a href="servicos-historico.html">Histórico de Serviços</a>
+                <a href="pecas-lista.html" class="active">Lista de Peças</a>
+                <a href="pecas-estoque.html">Controle de Estoque</a>
+                <a href="usuarios-master.html">Gestão (Master)</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="btn" style="background: var(--danger); text-align: center;">Sair</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="page-header">
+                <h1>Lista de Peças Cadastradas</h1>
+                <p>Dicionário de componentes homologados para uso nas ordens de serviço.</p>
+            </header>
+            
+            <div class="content-section">
+                <h2>Catálogo de Referência (Pricing)</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Código Ref.</th>
+                            <th>Nome do Componente</th>
+                            <th>Categoria</th>
+                            <th>Preço Base (R$)</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PC-001</td>
+                            <td>Filtro de Óleo VW</td>
+                            <td>Motor / Lubrificação</td>
+                            <td>R$ 45,00</td>
+                            <td><a href="#">Editar</a></td>
+                        </tr>
+                        <tr>
+                            <td>BR-010</td>
+                            <td>Pastilha de Freio Bosch</td>
+                            <td>Freios</td>
+                            <td>R$ 180,00</td>
+                            <td><a href="#">Editar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
