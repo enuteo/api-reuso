@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serviços em Andamento - Oficina</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Lista de Serviços - Oficina</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <div class="app-layout">
@@ -12,35 +12,35 @@
             <div class="sidebar-header">Oficina System</div>
             <nav class="sidebar-nav">
                 <a href="dashboard-usuario.html">Dashboard</a>
-                <a href="servicos-andamento.html" class="active">Serviços em Andamento</a>
-                <a href="servicos-lista.html">Lista de Todos os Serviços</a>
+                <a href="servicos-andamento.html">Serviços em Andamento</a>
+                <a href="servicos-lista.html" class="active">Lista de Todos os Serviços</a>
                 <a href="servicos-historico.html">Histórico de Serviços</a>
                 <a href="pecas-lista.html">Lista de Peças</a>
                 <a href="pecas-estoque.html">Controle de Estoque</a>
                 <a href="usuarios-master.html">Gestão (Master)</a>
             </nav>
             <div class="sidebar-footer">
-                <a href="login.html" class="btn" style="background: var(--danger); text-align: center;">Sair</a>
+                <a href="../comum/login.html" class="btn" style="background: var(--danger); text-align: center;">Sair</a>
             </div>
         </aside>
 
         <main class="main-content">
             <header class="page-header">
-                <h1>Serviços em Andamento</h1>
-                <p>Gestão das Ordens de Serviço (OS) ativas no pátio da oficina.</p>
+                <h1>Lista de Todos os Serviços</h1>
+                <p>Catálogo completo das Ordens de Serviço registradas no sistema.</p>
             </header>
-
+            
             <div class="content-section">
-                <h2>Fila de Manutenção</h2>
+                <h2>Catálogo Geral de OS</h2>
                 <table>
                     <thead>
                         <tr>
-                            <th>OS</th>
+                            <th>Ordem</th>
                             <th>Cliente</th>
                             <th>Veículo</th>
-                            <th>Diagnóstico / Serviço</th>
-                            <th>Status Atual</th>
-                            <th>Ação</th>
+                            <th>Data Abertura</th>
+                            <th>Status</th>
+                            <th>Detalhes</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,17 +48,17 @@
                             <td>#1042</td>
                             <td>Carlos Almeida</td>
                             <td>Honda Civic</td>
-                            <td>Revisão Geral e Suspensão</td>
-                            <td><span class="badge warning">No Elevador</span></td>
-                            <td><a href="#">Atualizar</a></td>
+                            <td>20/05/2026</td>
+                            <td><span class="badge warning">Andamento</span></td>
+                            <td><a href="#">Visualizar</a></td>
                         </tr>
                         <tr>
-                            <td>#1043</td>
-                            <td>Mariana Silva</td>
-                            <td>VW Polo</td>
-                            <td>Troca de Correia Dentada</td>
-                            <td><span class="badge primary">Aguardando Peça</span></td>
-                            <td><a href="#">Atualizar</a></td>
+                            <td>#1040</td>
+                            <td>João Pedro</td>
+                            <td>Ford Ka</td>
+                            <td>15/05/2026</td>
+                            <td><span class="badge success">Finalizado</span></td>
+                            <td><a href="#">Visualizar</a></td>
                         </tr>
                     </tbody>
                 </table>
