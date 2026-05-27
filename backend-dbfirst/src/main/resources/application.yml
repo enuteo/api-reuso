@@ -1,0 +1,10 @@
+spring:
+    application:
+        name: api-reuso-jpa
+    datasource:
+        url: jdbc:mysql://localhost:3306/oficina
+        username: root
+        password: 9239
+    jpa:
+        hibernate:
+            ddl-auto: update
