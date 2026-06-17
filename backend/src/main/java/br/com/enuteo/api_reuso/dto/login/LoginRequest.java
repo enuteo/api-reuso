@@ -3,18 +3,18 @@ package br.com.enuteo.api_reuso.dto.login;
 public class LoginRequest {
 
     private String email;
-    private String password;
+    private String senha;
+
     public String getEmail() {
         return email;
     }
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getPassword() {
-        return password;
+    public String getSenha() {
+        return senha;
     }
-    public void setPassword(String password) {
-        this.password = password;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
-    
 }

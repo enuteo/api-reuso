@@ -38,32 +38,54 @@
                             <th>Código</th>
                             <th>Peça</th>
                             <th>Qtd. Atual</th>
-                            <th>Qtd. Mínima</th>
                             <th>Status do Estoque</th>
-                            <th>Ação</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>PC-001</td>
-                            <td>Filtro de Óleo VW</td>
-                            <td>45 un</td>
-                            <td>10 un</td>
-                            <td><span class="badge success">Normal</span></td>
-                            <td><a href="#">Atualizar</a></td>
-                        </tr>
-                        <tr>
-                            <td>PC-042</td>
-                            <td>Correia Dentada Fiat</td>
-                            <td>2 un</td>
-                            <td>5 un</td>
-                            <td><span class="badge warning" style="background: var(--danger);">Crítico</span></td>
-                            <td><a href="#">Comprar</a></td>
-                        </tr>
+                    <tbody id="tabelaEstoque">
+                        <tr><td colspan="4">Carregando...</td></tr>
                     </tbody>
                 </table>
             </div>
         </main>
     </div>
+
+    <script src="../js/api.js"></script>
+    <script>
+        const LIMITE_CRITICO = 10; // limiar puramente visual (client-side)
+        const tabelaEstoque = document.getElementById('tabelaEstoque');
+
+        function escapeHtml(value) {
+            return String(value ?? '').replace(/[&<>"']/g, (c) =>
+                ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        }
+
+        function badgeStatus(qtd) {
+            return qtd <= LIMITE_CRITICO
+                ? '<span class="badge warning" style="background: var(--danger);">Crítico</span>'
+                : '<span class="badge success">Normal</span>';
+        }
+
+        async function carregarEstoque() {
+            try {
+                const itens = await API.listarEstoque();
+                if (!itens.length) {
+                    tabelaEstoque.innerHTML = '<tr><td colspan="4">Estoque vazio.</td></tr>';
+                    return;
+                }
+                tabelaEstoque.innerHTML = itens.map((e) => `
+                    <tr>
+                        <td>${e.pecaId}</td>
+                        <td>${escapeHtml(e.pecaNome)}</td>
+                        <td>${e.quantidade} un</td>
+                        <td>${badgeStatus(e.quantidade)}</td>
+                    </tr>`).join('');
+            } catch (err) {
+                tabelaEstoque.innerHTML = '<tr><td colspan="4">Falha ao carregar estoque.</td></tr>';
+                API.notify(err.message);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', carregarEstoque);
+    </script>
 </body>
 </html>

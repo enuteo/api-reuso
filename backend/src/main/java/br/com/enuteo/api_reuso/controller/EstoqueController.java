@@ -2,7 +2,7 @@ package br.com.enuteo.api_reuso.controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,42 +12,46 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.enuteo.api_reuso.dto.pecas.AbstractPeca;
+import br.com.enuteo.api_reuso.dto.pecas.Peca;
 import br.com.enuteo.api_reuso.service.EstoqueService;
 
+/**
+ * Catálogo de peças (tabela `peca`: id, nome, preco).
+ * O inventário/quantidade fica em InventarioController (/api/estoque).
+ */
 @RestController
-@RequestMapping("/api/pecas") 
-@CrossOrigin(origins = "*")   
+@RequestMapping("/api/pecas")
 public class EstoqueController {
 
     private final EstoqueService estoqueService;
-    
-    public EstoqueController(EstoqueService estoqueService){
+
+    public EstoqueController(EstoqueService estoqueService) {
         this.estoqueService = estoqueService;
     }
-    
+
     @GetMapping
-    public List<AbstractPeca> listar() {
-        return estoqueService.listarTodas();
+    public List<Peca> listar() {
+        return estoqueService.listarPecas();
     }
 
-    @GetMapping("/{nome}/{id}")
-    public AbstractPeca buscar(@PathVariable String nome, @PathVariable Long id) {
-        return estoqueService.buscarPeca(id, nome);
+    @GetMapping("/{id}")
+    public Peca buscar(@PathVariable Long id) {
+        return estoqueService.buscarPeca(id);
     }
 
     @PostMapping
-    public AbstractPeca criar(@RequestBody AbstractPeca peca) {
-        return peca;
+    public Peca criar(@RequestBody Peca peca) {
+        return estoqueService.criar(peca);
     }
 
     @PutMapping("/{id}")
-    public AbstractPeca atualizar(@PathVariable Long id, @RequestBody AbstractPeca peca) {
-        return peca;
+    public Peca atualizar(@PathVariable Long id, @RequestBody Peca peca) {
+        return estoqueService.atualizar(id, peca);
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Long id) {
-        // No operation required for current MVP scope
+    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+        estoqueService.deletar(id);
+        return ResponseEntity.noContent().build();
     }
 }

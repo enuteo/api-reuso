@@ -10,14 +10,14 @@
     <div class="auth-wrapper">
         <div class="auth-box">
             <h2>Gestão Oficina</h2>
-            <form action="dashboard-usuario.html" method="POST">
+            <form id="formLogin" method="POST">
                 <div class="form-group">
                     <label for="email">E-mail</label>
                     <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
                 </div>
                 <div class="form-group">
-                    <label for="password">Senha</label>
-                    <input type="password" id="password" name="password" required placeholder="Sua senha">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" required placeholder="Sua senha">
                 </div>
                 <button type="submit" class="btn">Entrar</button>
             </form>
@@ -26,5 +26,17 @@
             </div>
         </div>
     </div>
+
+    <script src="../js/api.js"></script>
+    <script>
+        API.bindForm('#formLogin', API.login, {
+            onSuccess: (data) => {
+                // classe 0 = Funcionário | 1 = Cliente
+                window.location.href = (data.classe === 0)
+                    ? '../usuario/dashboard-usuario.html'
+                    : '../cliente/dashboard-cliente.html';
+            }
+        });
+    </script>
 </body>
 </html>

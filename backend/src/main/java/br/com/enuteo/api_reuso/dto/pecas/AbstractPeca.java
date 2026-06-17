@@ -1,8 +1,5 @@
 package br.com.enuteo.api_reuso.dto.pecas;
 
-import lombok.Getter;
-import lombok.Setter;
-
 public abstract class AbstractPeca {
 
     private long id;

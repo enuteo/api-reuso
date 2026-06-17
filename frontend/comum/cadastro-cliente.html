@@ -10,7 +10,7 @@
     <div class="auth-wrapper">
         <div class="auth-box">
             <h2>Novo Cliente</h2>
-            <form action="login.html" method="POST">
+            <form id="formCadastro" action="login.html" method="POST">
                 <div class="form-group">
                     <label for="nome">Nome Completo</label>
                     <input type="text" id="nome" name="nome" required>
@@ -22,10 +22,11 @@
                 <div class="form-group">
                     <label for="email">E-mail</label>
                     <input type="email" id="email" name="email" required>
+                    <small style="color: var(--text-muted);">Você usará este e-mail para entrar no sistema.</small>
                 </div>
                 <div class="form-group">
-                    <label for="password">Senha</label>
-                    <input type="password" id="password" name="password" required>
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" required>
                 </div>
                 <button type="submit" class="btn">Criar Conta</button>
             </form>
@@ -34,5 +35,13 @@
             </div>
         </div>
     </div>
+
+    <script src="../js/api.js"></script>
+    <script>
+        API.bindForm('#formCadastro', API.cadastrarCliente, {
+            successMessage: 'Conta criada! Faça login com o seu nome e senha.',
+            onSuccess: () => { setTimeout(() => { window.location.href = 'login.html'; }, 1200); }
+        });
+    </script>
 </body>
 </html>
