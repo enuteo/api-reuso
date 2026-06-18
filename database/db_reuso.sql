@@ -45,12 +45,12 @@ CREATE TABLE `cliente` (
   PRIMARY KEY (`id`),
   KEY `fk_cliente_usuario` (`id_usuario`),
   CONSTRAINT `fk_cliente_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (1,'Lucas Silva','lucas@exemplo.com',NULL,2),(2,'Teste da Silva','teste@teste.com','11 11111111',3);
+INSERT INTO `cliente` VALUES (1,'Lucas Silva','lucas@exemplo.com',NULL,2),(2,'Teste da Silva','teste@teste.com','11 11111111',3),(3,'Fulano da Silva','fulano@teste.com','11 11111111',4),(4,'Cliente Teste','cliente@teste.com','11 11111111',5),(5,'Cliente Teste','cleinte@teste.com','11 98888-7777',6);
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 DROP TABLE IF EXISTS `estoque`;
@@ -135,12 +135,12 @@ CREATE TABLE `servico_cliente` (
   KEY `fk_sc_servico` (`servico_id`),
   CONSTRAINT `fk_sc_cliente` FOREIGN KEY (`cliente_id`) REFERENCES `cliente` (`id`),
   CONSTRAINT `fk_sc_servico` FOREIGN KEY (`servico_id`) REFERENCES `servico` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 LOCK TABLES `servico_cliente` WRITE;
 /*!40000 ALTER TABLE `servico_cliente` DISABLE KEYS */;
-INSERT INTO `servico_cliente` VALUES (1,1,2);
+INSERT INTO `servico_cliente` VALUES (1,1,2),(2,5,1),(3,5,3);
 /*!40000 ALTER TABLE `servico_cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 DROP TABLE IF EXISTS `usuario`;
@@ -154,12 +154,12 @@ CREATE TABLE `usuario` (
   `classe` int(1) unsigned NOT NULL DEFAULT 0 COMMENT '0 = Funcionario | 1 = Cliente',
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_usuario_email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'admin','admin@oficina.com','1234',0),(2,'lucas','lucas@exemplo.com','1234',1),(3,'Teste da Silva','teste@teste.com','Teste123',1);
+INSERT INTO `usuario` VALUES (1,'admin','admin@oficina.com','$2a$10$yzzI.Oh8BhdT7LQ.FXNpiuD1xkT/lD.BgtrSzJF67gcs7U25u9U7y',0),(2,'lucas','lucas@exemplo.com','$2a$10$sJCygc8W0LZWGtSw1dHmdeydavd3DYUWPwnse89FsrnZHWIOgJady',1),(3,'Teste da Silva','teste@teste.com','$2a$10$MGaRyxrxDeblc8gWOFXQsOog7km3R/K.zsU.KAb4mNsJL4.bp7Azu',1),(4,'Fulano da Silva','fulano@teste.com','$2a$10$rDifg/Cow1ft5QkARG7.ie4wH3dasxFvVYbtB0muz1JgW7qKfPnUG',1),(5,'Cliente Teste','cliente@teste.com','$2a$10$WqJ1VZkwIdm4ZslumX7q6.z2VxeHD8Go2.4AHoEC1fgYMCZhqX7cq',1),(6,'Cliente Teste','cleinte@teste.com','cliente123',1);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

@@ -176,21 +176,34 @@
     request(`/api/pecas/${encodeURIComponent(id)}`, { method: 'DELETE' });
 
   /* ------------------------------------------------------------------ */
-  /* Endpoints PROPOSTOS (WIP — controllers ainda inexistentes)          */
-  /* Já instrumentados no frontend; retornarão erro até o backend existir.*/
+  /* Cliente (reais)                                                     */
   /* ------------------------------------------------------------------ */
 
+  /** POST /api/clientes — cadastro de cliente. */
   const cadastrarCliente = (form) =>
     request('/api/clientes', { method: 'POST', body: serializeForm(form) });
 
-  const cadastrarUsuario = (form) =>
-    request('/api/usuarios', { method: 'POST', body: serializeForm(form) });
+  /** GET /api/clientes/usuario/{id} — perfil do cliente logado. */
+  const getPerfilCliente = (usuarioId) =>
+    request(`/api/clientes/usuario/${encodeURIComponent(usuarioId)}`);
 
-  const atualizarPerfil = (id, form) =>
-    request(`/api/clientes/${encodeURIComponent(id)}/perfil`, {
+  /** GET /api/clientes/usuario/{id}/servicos — serviços contratados. */
+  const getServicosCliente = (usuarioId) =>
+    request(`/api/clientes/usuario/${encodeURIComponent(usuarioId)}/servicos`);
+
+  /** PUT /api/clientes/usuario/{id} — atualiza perfil (e senha, opcional). */
+  const atualizarPerfilCliente = (usuarioId, form) =>
+    request(`/api/clientes/usuario/${encodeURIComponent(usuarioId)}`, {
       method: 'PUT',
       body: serializeForm(form),
     });
+
+  /* ------------------------------------------------------------------ */
+  /* Endpoints PROPOSTOS (WIP — controllers ainda inexistentes)          */
+  /* ------------------------------------------------------------------ */
+
+  const cadastrarUsuario = (form) =>
+    request('/api/usuarios', { method: 'POST', body: serializeForm(form) });
 
   const cadastrarServico = (form) =>
     request('/api/servicos', { method: 'POST', body: serializeForm(form) });
@@ -289,10 +302,13 @@
     criarPeca,
     atualizarPeca,
     excluirPeca,
-    // propostos (WIP)
+    // cliente (reais)
     cadastrarCliente,
+    getPerfilCliente,
+    getServicosCliente,
+    atualizarPerfilCliente,
+    // propostos (WIP)
     cadastrarUsuario,
-    atualizarPerfil,
     cadastrarServico,
     // UI
     notify,

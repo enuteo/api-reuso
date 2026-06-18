@@ -100,6 +100,39 @@ Cadastro de cliente. Cria, em uma transação, um `usuario` (`classe = 1`) **e**
 ```
 - Response 400 (texto puro): `Já existe uma conta com esse e-mail.`
 
+## GET /api/clientes/usuario/{usuarioId}
+
+Perfil do cliente logado (o front passa o `id` do usuário guardado na sessão).
+- Response 200: `{ "id", "nome", "email", "telefone" }`
+
+## GET /api/clientes/usuario/{usuarioId}/servicos
+
+Serviços vinculados ao cliente (via `servico_cliente`).
+- Response 200:
+```json
+[ { "id": "integer", "descricao": "string", "preco": "number", "keyword": "string" } ]
+```
+
+## PUT /api/clientes/usuario/{usuarioId}
+
+Atualiza o perfil (atualiza `usuario` + `cliente`). Troca de senha opcional.
+- Request body:
+```json
+{
+  "nome": "string",
+  "telefone": "string",
+  "email": "string",
+  "currentPassword": "string (obrigatório só para trocar a senha)",
+  "newPassword": "string (opcional; vazio mantém a atual)"
+}
+```
+- Response 200: `{ "id", "nome", "email", "telefone" }`
+- Response 400 (texto puro): `Senha atual incorreta.`
+
+> O `login` agora devolve também o `id` do usuário, usado por essas rotas.
+> ⚠️ Sem token de autenticação: o `usuarioId` vem do cliente. Aceitável para o estágio
+> atual (educacional); em produção, usar um token/sessão server-side.
+
 ---
 
 # Modelo de dados (`db_reuso`)
@@ -127,8 +160,13 @@ O banco já modela todo o domínio, mas ainda **não há controllers** para:
 `funcionario`, `servico`, `servico_cliente`, `acesso_funcionario`.
 
 As páginas do frontend abaixo dependem desses endpoints futuros e seguem com dados estáticos/mock:
-`usuarios-master.html`, `servicos-lista.html`, `cliente-perfil.html`,
-`dashboard-*`, `servicos-andamento.html`, `servicos-historico.html`, `cliente-andamento.html`, `cliente-historico.html`.
+`usuarios-master.html`, `servicos-lista.html`, `dashboard-usuario.html`,
+`servicos-andamento.html`, `servicos-historico.html`.
+
+As páginas do **cliente** já consomem dados reais (perfil + serviços vinculados):
+`dashboard-cliente.html`, `cliente-perfil.html`, `cliente-historico.html`, `cliente-andamento.html`.
+Observação: não há modelo de **veículo/ordem de serviço/status**, então essas páginas mostram os
+serviços contratados — não há separação real entre "andamento" e "histórico".
 
 ---
 

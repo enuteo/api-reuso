@@ -67,22 +67,76 @@
                                 <th>Ação</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>Carlos Mecânico</td>
-                                <td><span class="badge primary">Funcionário</span></td>
-                                <td><a href="#" style="color: var(--danger);">Remover</a></td>
-                            </tr>
-                            <tr>
-                                <td>Mariana Silva</td>
-                                <td><span class="badge text-muted">Cliente</span></td>
-                                <td><a href="#" style="color: var(--danger);">Remover</a></td>
-                            </tr>
+                        <tbody id="tabelaUsuarios">
+                            <tr><td colspan="3">Carregando...</td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </main>
     </div>
+
+    <script src="../js/api.js"></script>
+    <script>
+        const tabelaUsuarios = document.getElementById('tabelaUsuarios');
+
+        function escapeHtml(v) {
+            return String(v ?? '').replace(/[&<>"']/g, (c) =>
+                ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        }
+
+        async function carregarUsuarios() {
+            try {
+                const usuarios = await API.request('/api/clientes/usuario');
+                tabelaUsuarios.innerHTML = usuarios.length
+                    ? usuarios.map((u) => `
+                        <tr>
+                            <td>${escapeHtml(u.nome)}</td>
+                            <td>${u.classe === 0 ? 'Funcionário' : 'Cliente'}</td>
+                            <td><a href="#" data-acao="remover" data-id="${u.id}" style="color: var(--danger);">Remover</a></td>
+                        </tr>`).join('')
+                    : '<tr><td colspan="3">Nenhum usuário.</td></tr>';
+            } catch (err) {
+                tabelaUsuarios.innerHTML = '<tr><td colspan="3">Falha ao carregar usuários.</td></tr>';
+                API.notify(err.message);
+            }
+        }
+
+        // Cadastro de novo usuário
+        document.querySelector('form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const payload = {
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                senha: document.getElementById('password').value,
+                classe: document.getElementById('tipoUsuario').value === 'funcionario' ? 0 : 1
+            };
+            try {
+                const res = await API.request('/api/clientes/usuario/cadastro', { method: 'POST', body: payload });
+                API.notify(res.mensagem || 'Usuário registrado!', 'success');
+                event.target.reset();
+                carregarUsuarios();
+            } catch (err) {
+                API.notify(err.message);
+            }
+        });
+
+        // Remover usuário (delete físico)
+        tabelaUsuarios.addEventListener('click', async (event) => {
+            const link = event.target.closest('[data-acao="remover"]');
+            if (!link) return;
+            event.preventDefault();
+            if (!confirm('Remover este usuário permanentemente?')) return;
+            try {
+                await API.request(`/api/clientes/usuario/${link.dataset.id}`, { method: 'DELETE' });
+                API.notify('Usuário removido.', 'success');
+                carregarUsuarios();
+            } catch (err) {
+                API.notify(err.message);
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', carregarUsuarios);
+    </script>
 </body>
 </html>

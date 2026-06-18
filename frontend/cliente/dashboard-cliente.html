@@ -23,43 +23,67 @@
 
         <main class="main-content">
             <header class="page-header">
-                <h1>Bem-vindo, Cliente</h1>
-                <p>Acompanhe os serviços do seu veículo.</p>
+                <h1>Bem-vindo, <span id="clienteNome">cliente</span></h1>
+                <p>Acompanhe os serviços contratados.</p>
             </header>
 
             <div class="dashboard-grid">
                 <div class="stat-card">
-                    <h3>Veículos em Manutenção</h3>
-                    <div class="value">1</div>
-                </div>
-                <div class="stat-card">
-                    <h3>Serviços Realizados</h3>
-                    <div class="value">3</div>
+                    <h3>Serviços Contratados</h3>
+                    <div class="value" id="statServicos">—</div>
                 </div>
             </div>
 
             <div class="content-section">
-                <h2>Status do Veículo Atual</h2>
+                <h2>Meus Serviços</h2>
                 <table>
                     <thead>
                         <tr>
-                            <th>Ordem</th>
-                            <th>Veículo</th>
-                            <th>Status</th>
-                            <th>Previsão de Entrega</th>
+                            <th>Serviço</th>
+                            <th>Categoria</th>
+                            <th>Preço</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>#1043</td>
-                            <td>VW Polo 2020</td>
-                            <td><span class="badge primary">Aguardando Peça</span></td>
-                            <td>25/05/2026</td>
-                        </tr>
+                    <tbody id="tabelaServicos">
+                        <tr><td colspan="3">Carregando...</td></tr>
                     </tbody>
                 </table>
             </div>
         </main>
     </div>
+
+    <script src="../js/api.js"></script>
+    <script>
+        const sessao = API.session.get();
+        if (!sessao || sessao.classe !== 1 || sessao.id == null) {
+            window.location.href = '../comum/login.html';
+        }
+
+        function escapeHtml(v) {
+            return String(v ?? '').replace(/[&<>"']/g, (c) =>
+                ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (!sessao) return;
+            document.getElementById('clienteNome').textContent = sessao.nome || 'cliente';
+            const tabela = document.getElementById('tabelaServicos');
+            try {
+                const servicos = await API.getServicosCliente(sessao.id);
+                document.getElementById('statServicos').textContent = servicos.length;
+                tabela.innerHTML = servicos.length
+                    ? servicos.map((s) => `
+                        <tr>
+                            <td>${escapeHtml(s.descricao)}</td>
+                            <td>${escapeHtml(s.keyword)}</td>
+                            <td>R$ ${Number(s.preco).toFixed(2)}</td>
+                        </tr>`).join('')
+                    : '<tr><td colspan="3">Nenhum serviço contratado.</td></tr>';
+            } catch (err) {
+                tabela.innerHTML = '<tr><td colspan="3">Falha ao carregar serviços.</td></tr>';
+                API.notify(err.message);
+            }
+        });
+    </script>
 </body>
 </html>

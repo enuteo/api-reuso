@@ -28,39 +28,53 @@
             </header>
 
             <div class="content-section">
-                <h2>Registros de Ordens de Serviço Encerradas</h2>
+                <h2>Serviços Contratados</h2>
                 <table>
                     <thead>
                         <tr>
-                            <th>OS</th>
-                            <th>Data Conclusão</th>
-                            <th>Veículo</th>
-                            <th>Serviço Executado</th>
-                            <th>Valor Total</th>
-                            <th>Status</th>
+                            <th>Serviço</th>
+                            <th>Categoria</th>
+                            <th>Preço</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>#0912</td>
-                            <td>14/02/2026</td>
-                            <td>VW Polo 2020</td>
-                            <td>Troca de Óleo e Filtros</td>
-                            <td>R$ 350,00</td>
-                            <td><span class="badge success">Concluído</span></td>
-                        </tr>
-                        <tr>
-                            <td>#0845</td>
-                            <td>10/11/2025</td>
-                            <td>VW Polo 2020</td>
-                            <td>Alinhamento e Balanceamento</td>
-                            <td>R$ 180,00</td>
-                            <td><span class="badge success">Concluído</span></td>
-                        </tr>
+                    <tbody id="tabelaServicos">
+                        <tr><td colspan="3">Carregando...</td></tr>
                     </tbody>
                 </table>
             </div>
         </main>
     </div>
+
+    <script src="../js/api.js"></script>
+    <script>
+        const sessao = API.session.get();
+        if (!sessao || sessao.classe !== 1 || sessao.id == null) {
+            window.location.href = '../comum/login.html';
+        }
+
+        function escapeHtml(v) {
+            return String(v ?? '').replace(/[&<>"']/g, (c) =>
+                ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (!sessao) return;
+            const tabela = document.getElementById('tabelaServicos');
+            try {
+                const servicos = await API.getServicosCliente(sessao.id);
+                tabela.innerHTML = servicos.length
+                    ? servicos.map((s) => `
+                        <tr>
+                            <td>${escapeHtml(s.descricao)}</td>
+                            <td>${escapeHtml(s.keyword)}</td>
+                            <td>R$ ${Number(s.preco).toFixed(2)}</td>
+                        </tr>`).join('')
+                    : '<tr><td colspan="3">Nenhum serviço contratado.</td></tr>';
+            } catch (err) {
+                tabela.innerHTML = '<tr><td colspan="3">Falha ao carregar serviços.</td></tr>';
+                API.notify(err.message);
+            }
+        });
+    </script>
 </body>
 </html>

@@ -29,18 +29,18 @@
 
             <div class="content-section" style="max-width: 600px;">
                 <h2>Meus Dados</h2>
-                <form action="#" method="POST">
+                <form id="formPerfil" action="#" method="POST">
                     <div class="form-group">
                         <label for="nome">Nome Completo</label>
-                        <input type="text" id="nome" name="nome" value="Lucas Cunha da Silva" required>
+                        <input type="text" id="nome" name="nome" required>
                     </div>
                     <div class="form-group">
                         <label for="telefone">Telefone / WhatsApp</label>
-                        <input type="text" id="telefone" name="telefone" value="(41) 99999-9999" required>
+                        <input type="text" id="telefone" name="telefone">
                     </div>
                     <div class="form-group">
                         <label for="email">E-mail Corporativo / Pessoal</label>
-                        <input type="email" id="email" name="email" value="lucas@exemplo.com" required>
+                        <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form-group">
                         <label for="currentPassword">Senha Atual (Para confirmar alterações)</label>
@@ -56,5 +56,37 @@
             </div>
         </main>
     </div>
+
+    <script src="../js/api.js"></script>
+    <script>
+        const sessao = API.session.get();
+        if (!sessao || sessao.classe !== 1 || sessao.id == null) {
+            window.location.href = '../comum/login.html';
+        }
+
+        // Pré-preenche o formulário com os dados atuais do cliente.
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (!sessao) return;
+            try {
+                const perfil = await API.getPerfilCliente(sessao.id);
+                document.getElementById('nome').value = perfil.nome ?? '';
+                document.getElementById('telefone').value = perfil.telefone ?? '';
+                document.getElementById('email').value = perfil.email ?? '';
+            } catch (err) {
+                API.notify(err.message);
+            }
+        });
+
+        // Salva as alterações (e troca de senha, se preenchida).
+        API.bindForm('#formPerfil', (form) => API.atualizarPerfilCliente(sessao.id, form), {
+            successMessage: 'Perfil atualizado!',
+            onSuccess: (perfil) => {
+                const atual = API.session.get() || {};
+                API.session.save({ ...atual, nome: perfil.nome, email: perfil.email });
+                document.getElementById('currentPassword').value = '';
+                document.getElementById('newPassword').value = '';
+            }
+        });
+    </script>
 </body>
 </html>
