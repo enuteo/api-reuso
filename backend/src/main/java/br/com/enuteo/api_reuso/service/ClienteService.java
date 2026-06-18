@@ -1,11 +1,15 @@
 package br.com.enuteo.api_reuso.service;
 
+import java.util.List;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.enuteo.api_reuso.dto.cliente.AtualizarPerfilRequest;
 import br.com.enuteo.api_reuso.dto.cliente.CadastroClienteRequest;
 import br.com.enuteo.api_reuso.dto.cliente.ClienteResponse;
+import br.com.enuteo.api_reuso.dto.servico.ServicoResponse;
 import br.com.enuteo.api_reuso.exception.InvalidUser;
 import br.com.enuteo.api_reuso.repository.ClienteRepository;
 
@@ -39,5 +43,35 @@ public class ClienteService {
             req.getNome(), req.getEmail(), req.getTelefone(), usuarioId);
 
         return new ClienteResponse(clienteId, req.getNome(), req.getEmail(), req.getTelefone());
+    }
+
+    public ClienteResponse buscarPorUsuario(Long usuarioId) {
+        ClienteResponse cliente = clienteRepository.buscarPorUsuario(usuarioId);
+        if (cliente == null) {
+            throw new InvalidUser("Cliente não encontrado.");
+        }
+        return cliente;
+    }
+
+    public List<ServicoResponse> listarServicos(Long usuarioId) {
+        return clienteRepository.listarServicosPorUsuario(usuarioId);
+    }
+
+    @Transactional
+    public ClienteResponse atualizarPerfil(Long usuarioId, AtualizarPerfilRequest req) {
+        // Troca de senha (opcional): exige a senha atual correta.
+        if (req.getNewPassword() != null && !req.getNewPassword().isBlank()) {
+            String hashAtual = clienteRepository.senhaDoUsuario(usuarioId);
+            if (req.getCurrentPassword() == null
+                    || !passwordEncoder.matches(req.getCurrentPassword(), hashAtual)) {
+                throw new InvalidUser("Senha atual incorreta.");
+            }
+            clienteRepository.atualizarSenha(usuarioId, passwordEncoder.encode(req.getNewPassword()));
+        }
+
+        clienteRepository.atualizarUsuario(usuarioId, req.getNome(), req.getEmail());
+        clienteRepository.atualizarCliente(usuarioId, req.getNome(), req.getEmail(), req.getTelefone());
+
+        return clienteRepository.buscarPorUsuario(usuarioId);
     }
 }

@@ -24,6 +24,7 @@ public class InventarioController {
 
     @GetMapping
     public List<EstoqueItem> listar() {
+        System.out.println("listar estoque");
         return estoqueService.listarEstoque();
     }
 }

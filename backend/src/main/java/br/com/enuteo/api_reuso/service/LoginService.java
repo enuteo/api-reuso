@@ -35,6 +35,6 @@ public class LoginService {
         int classe = ((Number) user.get("classe")).intValue();
         List<String> keywords = loginRepository.keywords(id, classe);
 
-        return new LoginResponse(nome, classe, keywords);
+        return new LoginResponse(id, nome, classe, keywords);
     }
 }

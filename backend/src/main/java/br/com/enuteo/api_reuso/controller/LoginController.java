@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.enuteo.api_reuso.dto.login.LoginRequest;
 import br.com.enuteo.api_reuso.dto.login.LoginResponse;
 import br.com.enuteo.api_reuso.service.LoginService;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/auth/login")
@@ -24,7 +22,7 @@ public class LoginController {
 
     @PostMapping("")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request){
-
+        System.out.println("login");
         System.out.println("");
         return ResponseEntity.ok(loginService.login(request));
         

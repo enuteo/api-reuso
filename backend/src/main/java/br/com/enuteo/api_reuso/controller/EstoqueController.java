@@ -31,26 +31,31 @@ public class EstoqueController {
 
     @GetMapping
     public List<Peca> listar() {
+        System.out.println("listar pecas");
         return estoqueService.listarPecas();
     }
 
     @GetMapping("/{id}")
     public Peca buscar(@PathVariable Long id) {
+        System.out.println("buscar pecas");
         return estoqueService.buscarPeca(id);
     }
 
     @PostMapping
     public Peca criar(@RequestBody Peca peca) {
+        System.out.println("criar peca");
         return estoqueService.criar(peca);
     }
 
     @PutMapping("/{id}")
     public Peca atualizar(@PathVariable Long id, @RequestBody Peca peca) {
+        System.out.println("atualizar peca");
         return estoqueService.atualizar(id, peca);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Long id) {
+        System.out.println("deletar estoque");
         estoqueService.deletar(id);
         return ResponseEntity.noContent().build();
     }

@@ -37,7 +37,6 @@ public class EstoqueService {
     }
 
     // Exclusão em cascata: remove o estoque vinculado antes da peça (atômico).
-    @Transactional
     public void deletar(Long id) {
         estoqueRepository.deletarEstoquePorPeca(id);
         estoqueRepository.deletar(id);
